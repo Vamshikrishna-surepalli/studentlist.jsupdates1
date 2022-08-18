@@ -1,0 +1,41 @@
+import React,{useEffect, useState} from 'react';
+
+const StudentList=()=> {
+  const [totalData1,settotalData1]=useState([])
+
+  useEffect(()=>{
+    let studentList=JSON.parse(localStorage.getItem("courses"))
+    settotalData1(studentList)
+
+  },[])
+
+  return (
+    <div className="App " >
+      <center>
+      <table border="1">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>email</th>
+            <th>date</th>
+          </tr>
+          {totalData1?
+          totalData1.map((a)=>{
+            return(
+              <tr>
+                <td>{a.name}</td>
+                <td>{a.email}</td>
+                <td>{a.date}</td>
+              </tr>
+             )
+           }):undefined  
+         } 
+        </tbody>
+      </table>
+      </center>
+    </div>
+  )
+  
+}
+
+export default StudentList;
